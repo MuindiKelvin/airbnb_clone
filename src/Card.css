@@ -1,0 +1,149 @@
+/* ─── Card shell ────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #ebebeb;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  animation: cardIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card--clickable {
+  cursor: pointer;
+  outline: none;
+}
+.card--clickable:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+}
+.card--clickable:focus-visible {
+  outline: 2px solid #ff385c;
+  outline-offset: 2px;
+}
+
+/* Stagger */
+.card:nth-child(2) { animation-delay: 0.06s; }
+.card:nth-child(3) { animation-delay: 0.12s; }
+.card:nth-child(4) { animation-delay: 0.18s; }
+.card:nth-child(5) { animation-delay: 0.24s; }
+.card:nth-child(6) { animation-delay: 0.30s; }
+
+/* ─── Image ─────────────────────────────────────────────────────── */
+.card__imgWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #f0f0f0;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.card--clickable:hover .card__img { transform: scale(1.06); }
+
+/* ─── Badge ─────────────────────────────────────────────────────── */
+.card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #222222;
+  padding: 5px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  pointer-events: none;
+}
+
+/* ─── Heart ─────────────────────────────────────────────────────── */
+.card__heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+  z-index: 2;
+}
+.card__heart:hover { transform: scale(1.2); }
+
+.card__heart svg {
+  width: 24px;
+  height: 24px;
+  fill: rgba(0,0,0,0);
+  stroke: #fff;
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.4));
+  transition: fill 0.15s, stroke 0.15s;
+}
+.card__heart--saved svg {
+  fill: #ff385c;
+  stroke: #ff385c;
+  filter: none;
+}
+
+/* ─── Price pill ────────────────────────────────────────────────── */
+.card__pricePill {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #222222;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.card__pricePill strong { font-weight: 700; }
+
+/* ─── Info block ────────────────────────────────────────────────── */
+.card__info {
+  padding: 14px 16px 18px;
+}
+
+.card__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #222222;
+  margin: 0 0 5px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card__desc {
+  font-size: 13px;
+  color: #717171;
+  margin: 0 0 8px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card__cta {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff385c;
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: block;
+}
+.card--clickable:hover .card__cta { opacity: 1; }

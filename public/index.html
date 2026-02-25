@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- ── Favicon & App Icons ──────────────────────────────────── -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='%23FF385C' d='M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.09 12.54 7.96 16.512l.904 1.917c.539 1.101.773 1.693.773 2.56 0 1.496-.913 2.916-2.163 3.723C26.998 30.811 25.883 31 24.77 31c-1.674 0-3.034-.498-4.315-1.602l-.538-.476c-.349-.32-.638-.607-.921-.907l-3.009-3.226-.437.462c-1.208 1.31-2.768 2.96-4.93 4.121C9.765 30.34 8.58 31 7.373 31c-1.275 0-2.486-.374-3.508-1.115C2.753 29.05 2 27.847 2 26.383c0-.986.391-1.994 1.235-3.503l1.069-1.86C5.765 18.016 10.41 9.166 12.26 5.602L12.786 4.6C14.126 2.119 15.454 1 16 1z'/></svg>" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23FF385C'/><path fill='white' d='M16 3c1.6 0 2.77.77 3.8 2.615l.427.82c1.563 3.064 4.872 10.032 6.368 13.21l.723 1.533c.431.881.618 1.354.618 2.048 0 1.197-.73 2.333-1.73 2.978-.88.506-1.766.659-2.63.659-1.339 0-2.427-.398-3.452-1.282l-.43-.38c-.28-.257-.51-.486-.737-.726l-2.407-2.58-.35.37c-.966 1.048-2.214 2.368-3.944 3.297-.724.405-1.67.901-2.634.901-1.02 0-1.989-.3-2.806-.892C5.403 25.24 4.8 24.278 4.8 23.106c0-.789.313-1.595.988-2.802l.855-1.488C7.812 15.613 11.528 8.333 13.01 5.482L13.43 4.68C14.5 2.695 15.563 3 16 3z'/></svg>" />
+
+    <!-- ── Viewport & Theme ──────────────────────────────────────── -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FF385C" />
+
+    <!-- ── SEO & Social ──────────────────────────────────────────── -->
+    <meta name="description" content="Find unique places to stay with local hosts in 191 countries. Belong anywhere with Airbnb." />
+    <meta name="keywords" content="airbnb, vacation rentals, homes, experiences, places" />
+    <meta name="author" content="Airbnb Clone" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="Airbnb — Vacation Rentals, Cabins, Beach Houses & More" />
+    <meta property="og:description" content="Find unique places to stay with local hosts in 191 countries. Belong anywhere with Airbnb." />
+    <meta property="og:image"       content="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&q=80" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="Airbnb — Belong Anywhere" />
+    <meta name="twitter:description" content="Find unique places to stay with local hosts in 191 countries." />
+    <meta name="twitter:image"       content="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&q=80" />
+
+    <!-- ── Fonts ─────────────────────────────────────────────────── -->
+    <!-- Airbnb uses Cereal — closest free alternatives are Plus Jakarta Sans + DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+
+    <!-- ── PWA Manifest ──────────────────────────────────────────── -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- ── Global Styles ─────────────────────────────────────────── -->
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #222222;
+        background-color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Loading screen shown before React mounts */
+      #root:empty::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        z-index: 9999;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #dddddd; border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: #b0b0b0; }
+
+      /* Focus ring that matches Airbnb style */
+      :focus-visible {
+        outline: 2px solid #FF385C;
+        outline-offset: 2px;
+      }
+
+      /* Smooth image loading */
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* Remove default button styles */
+      button { font-family: inherit; }
+
+      /* Selection colour */
+      ::selection {
+        background-color: #FFD6DC;
+        color: #222222;
+      }
+    </style>
+
+    <title>Airbnb — Vacation Rentals, Cabins, Beach Houses & More</title>
+  </head>
+
+  <body>
+    <noscript>
+      <div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;text-align:center;padding:24px;">
+        <div>
+          <svg width="48" height="48" viewBox="0 0 32 32" style="margin-bottom:16px">
+            <path fill="#FF385C" d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.09 12.54 7.96 16.512l.904 1.917c.539 1.101.773 1.693.773 2.56 0 1.496-.913 2.916-2.163 3.723C26.998 30.811 25.883 31 24.77 31c-1.674 0-3.034-.498-4.315-1.602l-.538-.476c-.349-.32-.638-.607-.921-.907l-3.009-3.226-.437.462c-1.208 1.31-2.768 2.96-4.93 4.121C9.765 30.34 8.58 31 7.373 31c-1.275 0-2.486-.374-3.508-1.115C2.753 29.05 2 27.847 2 26.383c0-.986.391-1.994 1.235-3.503l1.069-1.86C5.765 18.016 10.41 9.166 12.26 5.602L12.786 4.6C14.126 2.119 15.454 1 16 1z"/>
+          </svg>
+          <p style="color:#222;font-size:18px;font-weight:600;margin:0 0 8px">JavaScript is required</p>
+          <p style="color:#717171;font-size:14px;margin:0">Please enable JavaScript to use Airbnb.</p>
+        </div>
+      </div>
+    </noscript>
+
+    <div id="root"></div>
+  </body>
+</html>

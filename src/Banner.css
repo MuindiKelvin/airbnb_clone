@@ -1,0 +1,200 @@
+/* ─── Shell ─────────────────────────────────────────────────────── */
+.banner {
+  position: relative;
+  height: 82vh;
+  min-height: 480px;
+  max-height: 780px;
+  overflow: hidden;
+}
+
+/* ─── Slides ────────────────────────────────────────────────────── */
+.banner__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.04);
+  will-change: opacity, transform;
+}
+.banner__slide--active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Overlay ───────────────────────────────────────────────────── */
+.banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(0,0,0,0.6) 0%,
+    rgba(0,0,0,0.28) 55%,
+    rgba(0,0,0,0.05) 100%
+  );
+  z-index: 1;
+}
+
+/* ─── Content ───────────────────────────────────────────────────── */
+.banner__content {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 80px;
+  transform: translateY(-50%);
+  max-width: 520px;
+}
+
+/* Enter animation */
+.banner__content--enter {
+  animation: contentEnterNext 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes contentEnterNext {
+  from { opacity: 0; transform: translateY(calc(-50% + 30px)); }
+  to   { opacity: 1; transform: translateY(-50%); }
+}
+
+/* Exit (swap handled by re-render timing) */
+.banner__content--exit {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ─── Badge ─────────────────────────────────────────────────────── */
+.banner__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+/* ─── Headline ──────────────────────────────────────────────────── */
+.banner__title {
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+}
+.banner__accent {
+  color: #ffe066;
+  display: inline-block;
+}
+
+/* ─── Subtitle ──────────────────────────────────────────────────── */
+.banner__sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: rgba(255,255,255,0.85);
+  line-height: 1.65;
+  margin: 0 0 36px;
+  max-width: 400px;
+}
+
+/* ─── CTA ───────────────────────────────────────────────────────── */
+.banner__btn {
+  background: #fff;
+  color: #222;
+  border: none;
+  border-radius: 14px;
+  padding: 15px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.banner__btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* ─── Arrow controls ────────────────────────────────────────────── */
+.banner__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.15s, transform 0.15s;
+  color: #222;
+}
+.banner__arrow:hover { background: #fff; transform: translateY(-50%) scale(1.08); }
+.banner__arrow--prev { left: 20px; }
+.banner__arrow--next { right: 20px; }
+
+/* ─── Dots ──────────────────────────────────────────────────────── */
+.banner__dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+}
+.banner__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+.banner__dot--active {
+  background: #fff;
+  transform: scale(1.4);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .banner__content {
+    left: 32px;
+    right: 32px;
+    top: auto;
+    bottom: 80px;
+    transform: none;
+    max-width: 100%;
+  }
+  .banner__content--enter {
+    animation: contentEnterMobile 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes contentEnterMobile {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .banner__overlay {
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.7) 0%,
+      rgba(0,0,0,0.2) 60%,
+      transparent 100%
+    );
+  }
+}
